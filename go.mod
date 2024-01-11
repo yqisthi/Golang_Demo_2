@@ -1,4 +1,4 @@
-module flutter_golang
+module github.com/yqisthi/Golang_Demo_2
 
 go 1.21.4
 

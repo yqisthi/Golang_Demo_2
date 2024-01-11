@@ -6,7 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/your_username/my-gin-postgres-app/controllers"
+	"github.com/yqisthi/Golang_Demo_2/controllers"
+	"github.com/yqisthi/Golang_Demo_2/models"
 )
 
 var db *gorm.DB
@@ -14,14 +15,14 @@ var err error
 
 func main() {
 	// Connect to PostgreSQL
-	db, err = gorm.Open("postgres", "host=localhost port=5432 user=your_username dbname=your_database password=your_password sslmode=disable")
+	db, err = gorm.Open("postgres", "host=localhost port=5433 user=postgres dbname=haus_flutter password=12345678 sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
 	// Auto Migrate
-	db.AutoMigrate(&controllers.User{})
+	db.AutoMigrate(&models.User{})
 
 	// Create a new Gin router
 	router := gin.Default()
@@ -32,6 +33,7 @@ func main() {
 	// Define routes
 	router.GET("/users", userController.GetUsers)
 	router.POST("/users", userController.CreateUser)
+	router.GET("/login", userController.Login)
 
 	// Run the application
 	err := router.Run(":8080")
