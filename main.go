@@ -31,8 +31,11 @@ func main() {
 	userController := controllers.NewUserController(db)
 
 	// Define routes
+	// GET ALL DATA
 	router.GET("/users", userController.GetUsers)
+	// CREATE USER
 	router.POST("/users", userController.CreateUser)
+	// LOGIN USER
 	router.GET("/login", userController.Login)
 
 	// Run the application
