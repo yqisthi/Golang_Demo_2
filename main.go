@@ -36,7 +36,7 @@ func main() {
 	// CREATE USER
 	router.POST("/users", userController.CreateUser)
 	// LOGIN USER
-	router.GET("/login", userController.Login)
+	router.POST("/login", userController.Login)
 
 	// Run the application
 	err := router.Run(":8080")
